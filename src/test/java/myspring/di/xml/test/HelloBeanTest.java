@@ -7,10 +7,9 @@ import myspring.di.xml.Hello;
 import myspring.di.xml.Printer;
 
 public class HelloBeanTest {
-	
 	public static void main(String[] args) {
 		
-		//1. IoC 컨테이너 새엇ㅇ
+		//1. IoC 컨테이너 생성
 		ApplicationContext context = 
 				new GenericXmlApplicationContext("config/beans.xml");
 		
