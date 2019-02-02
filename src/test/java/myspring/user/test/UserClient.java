@@ -18,7 +18,9 @@ import myspring.user.service.UserService;
 import myspring.user.vo.UserVO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:config/data.xml")
+@ContextConfiguration(locations={
+			"classpath:config/data.xml",
+			"classpath:config/aop.xml"})
 public class UserClient {
 
 	@Autowired
@@ -43,17 +45,16 @@ public class UserClient {
 		service.insertUser(new UserVO("user2","name2","여","city2"));
 		
 		for(UserVO user:service.getUserList()) {
-			System.out.println("아이디 = ["+user.getUserid()+"] 이름 = ["+user.getName()+"] 성별 = ["+user.getGender()+"] 도시 = ["+user.getCity()+"]");
+			System.out.println(user);
 		}
 	}
 	
 	@Test
-	@Ignore
 	public void updateUserTest() {
-		service.updateUser(new UserVO("user2","name2","남","city2"));
+		service.updateUser(new UserVO("user1","name1","남","city1"));
 		
 		for(UserVO user:service.getUserList()) {
-			System.out.println("아이디 = ["+user.getUserid()+"] 이름 = ["+user.getName()+"] 성별 = ["+user.getGender()+"] 도시 = ["+user.getCity()+"]");
+			System.out.println(user);
 		}
 	}
 	
@@ -63,15 +64,15 @@ public class UserClient {
 		service.deleteUser("user2");
 		
 		for(UserVO user:service.getUserList()) {
-			System.out.println("아이디 = ["+user.getUserid()+"] 이름 = ["+user.getName()+"] 성별 = ["+user.getGender()+"] 도시 = ["+user.getCity()+"]");
+			System.out.println(user);
 		}
 	}
 	
 	@Test
+	@Ignore
 	public void getUserTest() {
 		UserVO user = service.getUser("user1");
-		//System.out.println("아이디 = ["+user.getUserid()+"] 이름 = ["+user.getName()+"] 성별 = ["+user.getGender()+"] 도시 = ["+user.getCity()+"]");
-		user.userInfo();
+		System.out.println(user);
 		assertEquals("name1",user.getName());
 	}
 	

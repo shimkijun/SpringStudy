@@ -1,5 +1,8 @@
 package myspring.user.vo;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class UserVO {
 	
 	private String userid;
@@ -44,8 +47,10 @@ public class UserVO {
 		this.city = city;
 	}
 	
-	public void userInfo() {
-		System.out.println("아이디 = ["+userid+"] 이름 = ["+name+"] 성별 = ["+gender+"] 도시 = ["+city+"]");
-	}
+	 @Override
+	 public String toString() {
+	 	return ToStringBuilder.reflectionToString(this, ToStringStyle.JSON_STYLE);
+	 }
+
 	
 }
