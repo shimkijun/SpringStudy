@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<UserVO> getUserList() {
-	
 		return dao.readAll();
 	}
 
