@@ -13,9 +13,11 @@ public class PreformanceTraceAdvice {
 		//타겟의 메서드가 호출되기 전의 시간
 		long start =System.currentTimeMillis();
 		try {
+			//타겟의 메서드 호출
 			result = joinPoint.proceed();
 			return result;
 		} finally {
+			// 타겟의 메서드가 호출된 후의 시간
 			long finish = System.currentTimeMillis();
 			System.out.println(signatureString + "종료");
 			System.out.println(signatureString + "실행 시간 : " + (finish - start) + " ms");

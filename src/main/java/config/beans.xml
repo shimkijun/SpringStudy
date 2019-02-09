@@ -16,7 +16,7 @@
 	
 	<bean id="hello2" class="myspring.di.xml.Hello">
 		<constructor-arg index="0" value="${myname}" />
-		<constructor-arg index="1" ref="${myprinter}"></constructor-arg>
+		<constructor-arg index="1" ref="${myprinter}" />
 	</bean>
 	
 	<bean id="hello3" class="myspring.di.xml.Hello">
@@ -28,6 +28,17 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="hello4" class="myspring.di.xml.Hello">
+		<property name="ages">
+			<map>
+				<entry key="kim" value="30" />
+				<entry key="lee" value="35" />
+				<entry key="ahn" value="40" />
+			</map>
+		</property>
+	</bean>
+	
 	
 	<bean id="printer" class="myspring.di.xml.StringPrinter"/>
 	<bean id="consolePrinter" class="myspring.di.xml.ConsolePrinter"/>

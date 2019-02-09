@@ -14,8 +14,8 @@
 	<context:property-placeholder location="classpath:config/datasource.properties"/>
 	
 	<!-- DataSource 설정 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="${db.driverClass}" />
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="${db.driverClass}" />
 		<property name="url" value="${db.url}"/>
 		<property name="username" value="${db.username}" />
 		<property name="password" value="${db.password}" />

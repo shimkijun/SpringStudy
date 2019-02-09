@@ -2,9 +2,9 @@ package myspring.user.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import myspring.user.vo.UserVO;
 
@@ -13,16 +13,23 @@ public class UserDaoImplMapper implements UserDao{
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	/*@Autowired
+	private SqlSession session;*/
 
 	public int insert(UserVO user) {
 		int result = 0;
 		result = userMapper.insertUser(user);
-		System.out.println("등록된 UserId = " + user.getUserid() + " Name = " + user.getName());
+		System.out.println("등록된 Mapper UserId = " + user.getUserid() + " Mapper Name = " + user.getName());
 		return result;
 	}
 
 	public List<UserVO> readAll() {
+		
 		List<UserVO> userList = userMapper.selectUserList();
+		
+		// SqlSession 방법
+		//List<UserVO> userList = session.selectList("userNs.selectUserList");
 		return userList;
 	}
 	

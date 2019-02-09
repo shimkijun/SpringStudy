@@ -12,7 +12,7 @@ import myspring.user.vo.UserVO;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	UserDao dao;
+	private UserDao dao;
 	
 	public int insertUser(UserVO user) {
 		return dao.insert(user);

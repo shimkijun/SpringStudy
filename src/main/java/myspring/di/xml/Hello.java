@@ -1,6 +1,7 @@
 package myspring.di.xml;
 
 import java.util.List;
+import java.util.Map;
 
 public class Hello {
 	
@@ -8,9 +9,10 @@ public class Hello {
 	private String name;
 	//멤버변수 Printer 타입 printer
 	private Printer printer;
-	//멤버변수 컬렉션 타입 names;
+	//멤버변수 컬렉션 타입(list) names;
 	private List<String> names;
-	
+	//멤버변수 컬렉션 타입(map) ages;
+	private Map<String,Integer> ages;
 	//기본 생성자
 	public Hello() {}
 	
@@ -35,6 +37,10 @@ public class Hello {
 
 	public void setNames(List<String> names) {
 		this.names = names;
+	}
+	
+	public void setAges(Map<String, Integer> ages) {
+		this.ages = ages;
 	}
 
 	//String 타입의 Hello 문자열과 + 멤버변수 name 값을 리턴

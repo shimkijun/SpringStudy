@@ -27,7 +27,6 @@ import myspring.user.vo.UserVO;
 			"classpath:config/data.xml",
 			"classpath:config/aop.xml",
 			"classpath:config/mybatisBeans.xml"})
-@Transactional(rollbackFor = {Exception.class})
 public class UserClient {
 
 	@Autowired
@@ -35,18 +34,21 @@ public class UserClient {
 	@Autowired
 	UserService service;
 	
+	
+	// SqlSession을 이용한 방법.
+	/*@Autowired
+	SqlSession session;*/
+	
 	@Test
-	public void daoDast(){
+	public void daoTest(){
 		UserDao dao = context.getBean("userDao",UserDao.class);
-		UserVO vo = dao.read("fdfdfd");
+		UserVO vo = dao.read("user1");
 		System.out.println("검색 아이디 = "+ vo);
 		
-		dao.insert(new UserVO("user5","name5","남","city5"));
-		
 		try {
-			
-			//dao.update(new UserVO("user1","name1","남","city1"));
-			//dao.delete("user4");
+			/*dao.insert(new UserVO("user33","name33","3남","city35"));
+			dao.update(new UserVO("user1","name1","남","city1"));
+			dao.delete("user4");*/
 			
 			List<UserVO> list = dao.readAll();
 			for (UserVO userVO : list) {
@@ -55,15 +57,13 @@ public class UserClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	@Test
 	@Ignore
 	public void configTest() {
 		SqlSession session = context.getBean("sqlSession",SqlSession.class);
-		UserVO user = session.selectOne("userNS.selectUserById","user1");
+		UserVO user = session.selectOne("userNs.selectUserById","user1");
 		System.out.println(user);
 	}
 
@@ -80,9 +80,10 @@ public class UserClient {
 	@Test
 	@Ignore
 	public void insertUserTest() {
-		service.insertUser(new UserVO("user3","name3","여","city3"));
+		service.insertUser(new UserVO("user12","name12","여12","city12"));
 		for(UserVO user:service.getUserList()) {
 			System.out.println(user);
+			
 		}
 	}
 	
@@ -107,7 +108,6 @@ public class UserClient {
 	}
 	
 	@Test
-	@Ignore
 	public void getUserTest() {
 		UserVO user = service.getUser("user1");
 		System.out.println(user);

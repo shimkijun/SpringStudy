@@ -6,26 +6,27 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
 	
-	<aop:aspectj-autoproxy />
-	<!-- MapperScannerConfigurer -->
+	
+	<!-- 여러 개의 Mapper 인터페이스 설정  -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="myspring.user.dao" />
-		<property name="annotationClass" value="myspring.user.dao.MyMapper"></property>
-	</bean>
+		 <property name="annotationClass" value="myspring.user.dao.MyMapper" />
+	</bean> 
 	
-	<!-- Mapper 설정 -->
+	<!-- 기존 Mapper 설정 -->
 <!-- 	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="myspring.user.dao.UserMapper" />
 		<property name="sqlSessionTemplate" ref="sqlSession" />
-	</bean> -->
+	</bean> --> 
 	<!-- MyBatis 설정 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:config/SqlMapConfig.xml" />
 		<property name="mapperLocations">
 			<list>
-				<value>classpath:mapper/*.xml</value>
+				<value>classpath:mapper/User.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -38,6 +39,7 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	      <property name="dataSource" ref="dataSource" />
 	</bean>
+	
 	<context:component-scan base-package="myspring.user,myspring.aop.annot" />
 	
 </beans>

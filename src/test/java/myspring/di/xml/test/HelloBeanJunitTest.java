@@ -23,7 +23,6 @@ public class HelloBeanJunitTest {
 	}
 	
 	@Test
-	@Ignore
 	public void test1(){
 		
 		//2. getBean() 호출
@@ -32,13 +31,14 @@ public class HelloBeanJunitTest {
 		//3. Hello 의 sayHello()호출.
 		/*Assert.assertEquals("Hello Spring Study",hello.sayHellow());*/
 		assertEquals("Hello Spring Study",hello.sayHellow());
+		System.out.println(hello.sayHellow());
 		//4. Hello 의 print() 호출
 		hello.print();
 		
 		//5. SpringPrinter getBean() 호출
 		Printer printer = context.getBean("printer",Printer.class);
 		assertEquals("Hello Spring Study",printer.toString());
-		
+		System.out.println(printer.toString());
 	}
 	
 	@Test

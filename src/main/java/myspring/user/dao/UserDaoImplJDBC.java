@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import myspring.user.vo.UserVO;
 
+//mybatis 를 이용할경우 jdbc 방식은 주석처리
 //@Repository("userDao")
 public class UserDaoImplJDBC implements UserDao{
 

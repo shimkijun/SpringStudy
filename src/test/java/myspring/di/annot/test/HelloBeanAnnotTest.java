@@ -12,8 +12,6 @@ import myspring.di.annot.Hello;
 import static org.junit.Assert.*;
 
 
-
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="classpath:config/annot.xml")
 public class HelloBeanAnnotTest {
@@ -24,7 +22,8 @@ public class HelloBeanAnnotTest {
 	@Test
 	public void annotTest() {
 		Hello hello = context.getBean("hello",Hello.class);
-		assertEquals("Hello Spring",hello.sayHellow());
+		assertEquals("Hello Spring Study",hello.sayHellow());
+		System.out.println(hello.sayHellow());
 	}
 	
 }
